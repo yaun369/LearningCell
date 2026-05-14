@@ -181,29 +181,39 @@ export const MODELS: CellModel[] = [
   {
     id: "mitochondrion",
     name: "线粒体",
-    subtitle: "细胞器 · 能量工厂",
+    subtitle: "细胞器 · 细胞的动力车间",
     category: "细胞器",
     accent: "#d97b5a",
-    description: "线粒体是真核细胞中负责有氧呼吸的细胞器……",
-    size: "0.5 – 1 微米",
-    location: "几乎所有真核细胞的细胞质",
-    visibleInLM: "仅在高倍镜下可见",
+    description:
+      "线粒体是真核细胞中的「动力车间」，几乎所有需要能量的生命活动都依赖它。它通过有氧呼吸，把葡萄糖等有机物里储存的化学能逐步释放，转化为细胞通用的能量货币 ATP，同时生成二氧化碳和水。",
+    size: "长 1 – 10 微米，宽 0.5 – 1 微米",
+    location: "几乎所有真核细胞的细胞质（哺乳动物成熟红细胞除外）",
+    visibleInLM: "是（经健那绿染色后可见）",
     features: [
-      { name: "外膜", detail: "光滑、富含孔蛋白，允许小分子通过" },
-      { name: "内膜与嵴", detail: "高度折叠形成嵴，承载电子传递链" },
-      { name: "基质", detail: "包含三羧酸循环的酶" },
-      { name: "mtDNA", detail: "自带环状 DNA，沿母系遗传" },
+      { name: "外膜", detail: "光滑、通透性高，小分子可以自由进出" },
+      {
+        name: "内膜与嵴",
+        detail:
+          "内膜向内折叠形成「嵴」，大幅扩大反应表面积；嵴上排列着与有氧呼吸有关的酶，是合成 ATP 的主要场所",
+      },
+      { name: "基质", detail: "内膜包围的液态区域，含有大量参与有氧呼吸的酶" },
+      {
+        name: "线粒体 DNA",
+        detail:
+          "线粒体含有少量环状 DNA 与核糖体，能半自主地合成部分自身蛋白质；后代的线粒体几乎全部来自卵细胞，因此呈现「母系遗传」",
+      },
     ],
-    funFact: "一个肝细胞里可能有上千个线粒体……",
+    funFact:
+      "线粒体被认为起源于一种被远古真核细胞「吞下」却没被消化的细菌——这就是著名的「内共生学说」，也正因如此，线粒体至今还保留着自己的 DNA。",
     whereItOccurs: {
-      text: "从酵母到鲸鱼，几乎所有真核生物都依赖线粒体供能。",
+      text: "从酵母到鲸鱼，几乎所有真核细胞都依赖线粒体供能；越是耗能旺盛的细胞（如心肌、骨骼肌、肝细胞），线粒体就越密集。",
       habitat: "动物 · 植物 · 真菌 · 原生生物",
     },
     modelUrl: asset("models/mitochondrion.glb"),
     imageUrl: asset("images/mitochondrion.jpg"),
-    fileSize: 12345678, // ← 改成压缩后文件的真实字节数（ls -l 看）
+    fileSize: 2101280,
     defaultRotationY: -Math.PI / 4,
-    displayScale: 1.4, // ← 实际跑一遍调到合适大小
+    displayScale: 1.4,
   },
 ];
 
