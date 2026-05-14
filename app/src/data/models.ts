@@ -215,6 +215,52 @@ export const MODELS: CellModel[] = [
     defaultRotationY: -Math.PI / 4,
     displayScale: 1.4,
   },
+  {
+    id: "chloroplast",
+    name: "叶绿体",
+    subtitle: "细胞器 · 光合作用的车间",
+    category: "细胞器",
+    accent: "#4daf7c",
+    description:
+      "叶绿体是绿色植物和部分藻类特有的细胞器，被誉为细胞里的「绿色工厂」。它能够捕获太阳光能，把空气中的二氧化碳和水合成为葡萄糖等有机物，同时释放氧气——这正是几乎所有生态系统中物质循环和能量流动的源头。",
+    size: "长 5 – 10 微米，宽 2 – 4 微米",
+    location: "绿色植物的叶肉细胞、幼茎及部分藻类细胞的细胞质",
+    visibleInLM: "是（呈绿色椭球形，可直接观察）",
+    features: [
+      { name: "外膜与内膜", detail: "双层膜结构，把叶绿体与细胞质基质分隔开" },
+      {
+        name: "类囊体与基粒",
+        detail:
+          "内膜内部存在许多扁平囊状的「类囊体」，多个类囊体堆叠形成「基粒」；基粒之间由基质类囊体相连，极大地扩展了膜面积",
+      },
+      {
+        name: "光合色素",
+        detail:
+          "类囊体薄膜上分布着叶绿素 a、叶绿素 b、胡萝卜素和叶黄素，负责吸收并传递光能；这也是叶片呈现绿色的原因",
+      },
+      {
+        name: "基质",
+        detail:
+          "内膜与类囊体之间的液态区域，含有暗反应（碳反应）所需的酶，是 CO₂ 被还原为有机物的场所",
+      },
+      {
+        name: "叶绿体 DNA",
+        detail:
+          "叶绿体含有少量环状 DNA 与核糖体，能半自主地合成部分自身蛋白质；它和线粒体一样表现为「母系遗传」",
+      },
+    ],
+    funFact:
+      "光合作用分为「光反应」和「暗反应」两个阶段：光反应在类囊体薄膜上进行，把光能转化为 ATP 和 NADPH，同时把水分解释放出 O₂；暗反应在基质中进行，利用光反应提供的能量把 CO₂ 还原为糖类——这是地球上几乎一切生命所需能量的最初来源。",
+    whereItOccurs: {
+      text: "凡是能进行光合作用的真核生物，体内都有叶绿体；从一片叶子到广袤的海洋藻类，它们共同维持着地球大气中的氧气与碳循环。",
+      habitat: "陆生植物 · 水生藻类 · 苔藓与蕨类 · 部分原生生物",
+    },
+    modelUrl: asset("models/chloroplast.glb"),
+    imageUrl: asset("images/chloroplast.jpg"),
+    fileSize: 2212964,
+    defaultRotationY: -Math.PI / 4,
+    displayScale: 1.4,
+  },
 ];
 
 export const DEFAULT_MODEL_ID = MODELS[0].id;

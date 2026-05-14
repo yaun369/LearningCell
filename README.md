@@ -49,8 +49,8 @@ npm run preview   # 本地预览构建产物
 使用 [glTF Transform](https://gltf-transform.dev/) 的 CLI，一行命令同时做 Draco 几何压缩 + WebP 贴图压缩：
 
 ```bash
-# 把 input.glb 压成可上线的 mitochondrion.glb
-npx @gltf-transform/cli optimize input.glb mitochondrion.glb \
+# 把 input.glb 压成可上线的 glb
+npx @gltf-transform/cli optimize input.glb output.glb \
   --texture-compress webp --compress draco
 ```
 
