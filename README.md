@@ -40,6 +40,45 @@ npm run build
 npm run preview   # 本地预览构建产物
 ```
 
+## 新增 / 替换模型
+
+项目里每个 `.glb` 都经过压缩，单文件控制在 2 ~ 11 MB。如果你拿到一个原始的大模型（几十甚至上百 MB），**请先压缩再放进 `app/public/models/`**，否则会拖慢首屏加载，并可能触碰 GitHub Pages 的单文件 100 MB 上限。
+
+### 1. 压缩 `.glb`
+
+使用 [glTF Transform](https://gltf-transform.dev/) 的 CLI，一行命令同时做 Draco 几何压缩 + WebP 贴图压缩：
+
+```bash
+# 把 input.glb 压成可上线的 mitochondrion.glb
+npx @gltf-transform/cli optimize input.glb mitochondrion.glb \
+  --texture-compress webp --compress draco
+```
+
+实测一个 ~80 MB 的线粒体原始模型可以压到 ~2 MB，肉眼几乎无损。
+
+### 2. 放入 public 目录
+
+```
+app/public/models/<id>.glb        # 压缩后的模型
+app/public/images/<id>.jpg        # 侧栏缩略图（建议 < 200 KB）
+```
+
+### 3. 在 `app/src/data/models.ts` 里追加一项
+
+所有 UI 都从 `MODELS` 数组遍历渲染，**只改这一个文件就够了**。需要注意：
+
+- `fileSize` 必须填**压缩后文件的真实字节数**（`ls -l` 直接看），用于进度条估算
+- `displayScale` 决定模型在 3D 舞台里的默认大小，先填 `1.4`，跑 `npm run dev` 微调
+- `defaultRotationY` 决定首次进入时的视角，常用 `-Math.PI / 4`
+
+### 4. 本地验证
+
+```bash
+cd app && npm run dev
+```
+
+侧栏出现新条目即可，旋转、缩放、进度条都应工作正常。
+
 ## 部署到 GitHub Pages
 
 仓库内已经提供 `.github/workflows/deploy.yml`，把仓库推到 GitHub 后：
@@ -70,7 +109,7 @@ npm run preview   # 本地预览构建产物
 │   │   └── models/                # 6 个 .glb 模型
 │   ├── src/
 │   │   ├── components/            # UI 组件（侧栏、3D 查看器、信息面板等）
-│   │   ├── data/models.ts         # 5 个生物概念的数据
+│   │   ├── data/models.ts         # 6 个生物概念的数据
 │   │   ├── hooks/useModel.ts      # 加载状态订阅 hook
 │   │   ├── lib/modelLoader.ts     # 流式下载 + Draco 解析 + 缓存
 │   │   ├── App.tsx
