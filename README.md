@@ -1,6 +1,6 @@
 # 细胞结构工坊 · Cell Architecture Studio
 
-一个面向中文课堂的交互式 3D 生物教学网页，支持对六个真实尺寸的细胞 / 分子 / 细胞器模型进行旋转、缩放与观察。
+一个面向中文课堂的交互式 3D 生物教学网页，支持对七个真实尺寸的细胞 / 分子 / 细胞器模型进行旋转、缩放与观察。
 
 > 🌱 _在显微镜下探索生命之美_
 
@@ -14,6 +14,7 @@
 | 神经元 | `app/public/models/neuron.glb` | 树突、轴突与突触结构 |
 | DNA 双螺旋 | `app/public/models/dna.glb` | 双螺旋骨架与碱基对 |
 | 线粒体 | `app/public/models/mitochondrion.glb` | 外膜、内膜与嵴，细胞的能量工厂 |
+| 叶绿体 | `app/public/models/chloroplast.glb` | 类囊体、基粒与基质，光合作用的绿色工厂 |
 
 模型已使用 [Draco](https://google.github.io/draco/) 压缩，每个文件约 2 ~ 11 MB。
 
@@ -92,7 +93,7 @@ cd app && npm run dev
 ## 加载策略
 
 - **优先加载**：用户进入页面后，会立即下载当前展示的模型（默认是体积最小、加载最快的 _植物细胞_，约 6 MB）。下载过程显示真实进度条与百分比。
-- **后台静默**：默认模型解析完成后（或者 5 秒超时兜底），其它 5 个模型会按顺序串行下载，避免与首个模型抢占带宽。
+- **后台静默**：默认模型解析完成后（或者 5 秒超时兜底），其它 6 个模型会按顺序串行下载，避免与首个模型抢占带宽。
 - **缓存命中**：浏览器对 `.glb` 启用 `force-cache`，再次访问几乎无需等待。
 - **手动覆盖**：当用户点击侧边栏中尚未加载完成的模型时，该模型的下载会立刻提升到前台，并显示进度。
 
@@ -106,10 +107,10 @@ cd app && npm run dev
 │   ├── public/
 │   │   ├── draco/                 # 自带的 Draco 解码器
 │   │   ├── images/                # 细胞缩略图（已压缩）
-│   │   └── models/                # 6 个 .glb 模型
+│   │   └── models/                # 7 个 .glb 模型
 │   ├── src/
 │   │   ├── components/            # UI 组件（侧栏、3D 查看器、信息面板等）
-│   │   ├── data/models.ts         # 6 个生物概念的数据
+│   │   ├── data/models.ts         # 7 个生物概念的数据
 │   │   ├── hooks/useModel.ts      # 加载状态订阅 hook
 │   │   ├── lib/modelLoader.ts     # 流式下载 + Draco 解析 + 缓存
 │   │   ├── App.tsx
